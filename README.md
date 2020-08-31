@@ -1,53 +1,65 @@
 ### `Send Tags Takehome - Deadline/Due: 6.14.20 5:00 PT` 
 
-At Noterouter, we use tags that are assigned to our clients' users in order determine who we want to send messages to. For this takehome, we created a rudimentary Tags system for you to finish and implement.
+At Noterouter, we use attributed such as tags, organization, or names that are assigned to our clients' users in order determine who we want to send messages to. For this takehome, we created a rudimentary sending system for you to finish and implement.
 
 This React App is partially implemented with the following inputs defined:
 
-> Tags - String "tags" separated by commas that can be thought of as attributes
-
-> People Configs - A JSON string where the key is the person's name and the value is an array of their associated tags 
+> Send Type - String "type" that tells us if we should be sending based on the user's organization, first/last name, or tag attributes
 
 > Send To - String "tags" separated by commas that will tell us who we want to send to
 
 > AND/OR? - The conditional clause that tells us which qualifier to use (e.g. send to everyone with "tagA" AND "tagB" or send to people with "tagA" OR "tagB")
 
-Your task is to complete the application where given the inputs from the user, an output of "Sent to" is determined.
+Your task is to complete the application where given an API endpoint (from sheetsdb https://sheetdb.io/, check out the documentation), an output of "Sent to" is determined.
 
 For example,
 
-The application might have the following inputs:
+The api might return the following:
 
-> Tags - hero, villain, person, mutant, tough, weak, smart, dumb, short, tall, weird, cool
+[
+    {"id":"1337","firstName":"Peter","lastName":"Parker","organizationId":"Avengers, Inc.","tags":"nerdy, strong, hero, funny"},
+    {"id":"2123","firstName":"John","lastName":"Doe","organizationId":"Mystery Company","tags":"smart, tall, handsome"},
+    {"id":"3312","firstName":"Chadwick","lastName":"Boseman","organizationId":"Hollywood SAG","tags":"king, hero, actor"},
+    {"id":"5408","firstName":"Jonathon","lastName":"Gough","organizationId":"NoteRouter","tags":"tall, smart, funny"},
+    {"id":"3882","firstName":"Ryan","lastName":"Gosling","organizationId":"Hollywood SAG","tags":"actor, handsome, tall"}
+]
 
-> People configs - 
-{
-    “Human Torch”: [“hero”, “mutant”, “tough”, “dumb”, “tall”],
-    “Spiderman”: [“hero”, “tough”, “smart”, “tall”],
-    “Kyle”: [“human”, “weak”, “smart”, “short”],
-    “JonJon”: [“human”, “strong”, “smart”, “tall”, “weird”]
-} 
+...and the application might have a user input like the following:
 
-> Send to - “human”, “tall”, “weak”
+
+> Send Type - “Tags”
+
+> Send To - "hero", "funny"
 
 > AND/OR? - OR
 
 Then the Output would be: 
-> `"Sent to: Human Torch, Spiderman, JonJon, Kyle"`
+> `"Sent to: Peter Parker, Chadwick Boseman, Jonathon Gough"`
+
+...or a user input like this:
+> Send Type - “Organization”
+
+> Send To - "Hollywood SAG"
+
+> AND/OR? - AND
+
+Then the Output would be: 
+> `"Sent to: Chadwick Boseman, Ryan Gosling"`
 
 
+HERE IS THE LINK FOR THE API WHERE YOU WILL BE GETTING DATA FROM: https://sheetdb.io/api/v1/aka2sv6jd00dh -- please don't spam with requests.
 
 Assumptions you can make:
-- Inputs to the forms will be text, meaning we won't be inputting them as quoted strings (tagA vs. "tagA") WITH ONE EXCEPTION...
-- The json string for People Configs will be in proper json string format. This is to help make parsing easier
-- You may need external npm libraries for things such as parsing, so feel free to introduce them but make sure you add them to your dependencies so we can `npm install`
+- Inputs to the forms will be text, meaning we won't be inputting them as quoted strings (tagA vs. "tagA")
+- The API Data WILL change for our evaluations but the schema will not
+- You may need external npm libraries for things such as parsing or API calls so feel free to introduce them but make sure you add them to your dependencies so we can `npm install`
 
 
 See below for a screenshot of what the output should look like:
 ![Example](/images/example.png)
 
 
-This assessment must be submitted by this Sunday, June 14 at 5:00 PT. You should not spend more than 2-4 hours on this assessment. We care much more about the quality of what you're able to get done, and the methodology you followed to do it - rather than how much you get done. With this time constraint in mind, what else besides the bare minimum can you get in before the buzzer?
+This assessment must be submitted by this Sunday, June 14 at 5:00 PT. You should not spend more than 2-3 hours on this assessment. We care much more about the quality of what you're able to get done, and the methodology you followed to do it - rather than how much you get done. With this time constraint in mind, what else besides the bare minimum can you get in before the buzzer?
 Bonus Points:
 - Making it fault tolerant (what happens when we put in unexpected inputs?)
 - Are you good at design? Show off here!
