@@ -68,7 +68,7 @@ Bonus Points:
 - We left some things intentionally vague to see how you deal with unclear requirements. At NoteRouter, you'll frequently have to call your own shots. :)
 
 ### `Submission`
-To submit, please fork the project and create a PR for us to review no later than Friday, August 4th at 5:00 PT. We will be pulling these down and running/testing them  locally on our machines.
+To submit, please fork the project and create a PR for us to review no later than Friday, September 4th at 5:00 PT. We will be pulling these down and running/testing them  locally on our machines.
 
 ### `npm install && npm start`
 
